@@ -21,9 +21,12 @@ int ImageBrightener::BrightenImage() {
         for (int y = 0; y < m_inputImage.columns; y++) {
             if (m_inputImage.pixels[x * m_inputImage.columns + y] > (255 - 25)) {
                 ++attenuatedPixelCount;
+                // m_inputImage.pixels[x * m_inputImage.rows + 1 + y] = 255;
                 m_inputImage.pixels[x * m_inputImage.columns + y] = 255;
             } else {
+                // --attenuatedPixelCount;
                 m_inputImage.pixels[x * m_inputImage.columns + y] += 25;
+                // m_inputImage.pixels[x * m_inputImage.rows + 1 + y] += 25;
             }
         }
     }
