@@ -10,8 +10,9 @@ class ImageBrightener {
     private:
         Image m_inputImage;
     public:
-        ImageBrightener(Image inputImage);
+        ImageBrightener(Image& inputImage);
         bool ValidateImage();
-        int BrightenImage();
+        int BrightenWholeImage();
+        bool AddBrighteningImage(Image& imageToAdd, int& attenuatedCount);
         Image GetImage();
 };
