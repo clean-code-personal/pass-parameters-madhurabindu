@@ -1,4 +1,4 @@
-name: C++ MS Build
+name: C++ VS2019 MS Build
 
 on:
   push:
