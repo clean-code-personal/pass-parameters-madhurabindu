@@ -19,6 +19,8 @@ jobs:
     - name: Set up MSBuild
       run: |
         echo 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin' >> $GITHUB_PATH
+    - name: Install MSBuild
+      run: choco install microsoft-build-tools -y
 
     - name: Build project
       run: msbuild /p:Configuration=Release 
