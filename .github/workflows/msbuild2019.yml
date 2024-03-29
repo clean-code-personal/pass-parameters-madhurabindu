@@ -25,7 +25,8 @@ jobs:
       run: |
         $vs_path = Get-Content vs_path.txt
         cd $vs_path
-        .\Enterprise\Common7\Tools\VsDevCmd.bat
+        cd '.\Enterprise\Common7\Tools\'
+        .\VsDevCmd.bat
         
     - name: Build project
       run: msbuild /p:Configuration=Release 
