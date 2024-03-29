@@ -15,12 +15,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Install Visual Studio Build Tools
-      uses: ilammy/msbuild-tool-installer@v1
-      with:
-        msvc-version: '2019'
-        components: 'build-tools'
+    
+    - name: Set up Visual Studio environment
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
 
     - name: Build project
       run: msbuild /p:Configuration=Release 
