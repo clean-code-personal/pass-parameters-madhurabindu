@@ -1,9 +1,6 @@
 name: C++ VS2019 MS Build
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
