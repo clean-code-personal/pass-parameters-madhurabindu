@@ -16,12 +16,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     
+    - name: Find Visual Studio installation path
+      id: find_vs_path
+      run: |
+        Get-ChildItem -Path 'C:\Program Files (x86)\Microsoft Visual Studio' -Directory | Where-Object { $_.Name -match "2019" } | Select-Object -ExpandProperty FullName | Out-File vs_path.txt
+
     - name: Set up Visual Studio environment
       run: |
-        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
-        dir
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
-
+        $vs_path = Get-Content vs_path.txt
+        cd $vs_path
+        .\Enterprise\Common7\Tools\VsDevCmd.bat
+        
     - name: Build project
       run: msbuild /p:Configuration=Release 
 
