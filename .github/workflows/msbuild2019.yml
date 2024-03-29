@@ -1,4 +1,4 @@
-name: C++ Build and Run
+name: C++ 2019 vs build
 
 on:
   push:
@@ -10,17 +10,17 @@ on:
 
 jobs:
   build_and_run:
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up MSBuild
-      run: |
-        echo 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin' >> $GITHUB_PATH
-    - name: Install MSBuild
-      run: choco install microsoft-build-tools -y
+    - name: Install Visual Studio Build Tools
+      uses: ilammy/msbuild-tool-installer@v1
+      with:
+        msvc-version: '2019'
+        components: 'build-tools'
 
     - name: Build project
       run: msbuild /p:Configuration=Release 
