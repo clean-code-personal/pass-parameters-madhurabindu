@@ -1,13 +1,20 @@
-name: C++ VS2019 MS Build
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+name: C++ Build and Run
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  build:
-    runs-on: windows-latest
+  build_and_run:
+    runs-on: windows-2019
 
     steps:
     - name: Checkout repository
@@ -21,7 +28,13 @@ jobs:
         echo "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin" >> $GITHUB_PATH
 
     - name: Build project
-      run: msbuild 
-      
+      run: msbuild /p:Configuration=Release 
+
+    - name: checking
+      run: |
+        dir
+        cd x64
+        dir
     - name: Run executable
-      run: .\release\cpp-pass-params.exe
+      run: .\x64\release\cpp-pass-params.exe
+
