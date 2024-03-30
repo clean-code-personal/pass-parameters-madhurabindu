@@ -21,26 +21,16 @@ jobs:
         $currentDirectory = Get-Location
         Write-Host "Current directory before entering VS Cmd terminal: $currentDirectory"
         echo "::set-output name=current_directory::$currentDirectory"
+        Push-Location
         Set-Location "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
         .\VsDevCmd.bat
         $currentDirectory = Get-Location
         Write-Host "Current directory after exiting VS Cmd terminal: $currentDirectory"
-        Set-Location $env:currentDirectory
+        Pop-Location
         $currentDirectory = Get-Location
         Write-Host "Current directory after changing back: $currentDirectory"
         msbuild          
-    - name: through script
-      run: |
-        cd
-        setlocal enabledelayedexpansion
-        set "currentDirectory=!CD!"
-        echo "Current directory: !currentDirectory!"        
-        cd "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
-        ./VsDevCmd.bat
-        echo "Visual Studio Cmd prompt" 
-        cd %currentDirectory%
-        echo "%cd%"
-        msbuild
+   
     
     - name: Build project
       run: msbuild /p:Configuration=Release 
