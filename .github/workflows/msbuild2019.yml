@@ -30,7 +30,8 @@ jobs:
         $currentDirectory = Get-Location
         Write-Host "Current directory after changing back: $currentDirectory"
         where.exe msbuild
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe"
+        Write-Host "Calling msbuild"
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe"
    
     - name: Run executable
       run: .\x64\release\cpp-pass-params.exe
