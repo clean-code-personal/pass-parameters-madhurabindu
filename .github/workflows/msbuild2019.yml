@@ -16,7 +16,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: msbuild through nuget
-      uses: NuGet/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v1
       with:
         vsVersion: 16.0
     - name: run build
