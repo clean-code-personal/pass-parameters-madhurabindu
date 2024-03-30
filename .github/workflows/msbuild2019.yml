@@ -29,7 +29,7 @@ jobs:
         Pop-Location
         $currentDirectory = Get-Location
         Write-Host "Current directory after changing back: $currentDirectory"
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\msbuild.exe"
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe"
    
     
     - name: Build project
