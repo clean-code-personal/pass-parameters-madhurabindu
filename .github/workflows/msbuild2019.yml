@@ -24,6 +24,7 @@ jobs:
     - name: Set up Visual Studio environment
       run: |
         $vs_path = Get-Content vs_path.txt
+        echo $vs_path
         cd $vs_path
         cd '.\Enterprise\Common7\Tools\'
         .\VsDevCmd.bat
