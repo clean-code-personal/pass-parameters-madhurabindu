@@ -18,11 +18,15 @@ jobs:
     
     - name: Enter VS Cmd terminal
       run: |
-        cd
+        echo "%cd%"
+        set "currentDirectory=%CD%"
+        echo "Current directory: %currentDirectory%"
+        
         cd "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
         ./VsDevCmd.bat
         echo "Visual Studio Cmd prompt" 
-        cd
+        cd %currentDirectory%
+        echo "%cd%"
         msbuild
     
     - name: Build project
