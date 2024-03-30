@@ -31,6 +31,7 @@ jobs:
          $exePath = Get-ChildItem -Path "x64\Release" -Filter "*.exe" -Recurse | Select-Object -First 1 -ExpandProperty FullName
         if ($exePath) {
           Write-Host "Executable found: $exePath"
+          & $exePath
           Start-Process -FilePath $exePath
         } else {
           Write-Host "Executable not found."
