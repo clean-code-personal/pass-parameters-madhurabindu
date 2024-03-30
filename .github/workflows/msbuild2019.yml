@@ -16,7 +16,23 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     
-    - name: Enter VS Cmd terminal
+    - name: Enter VS Cmd terminal through PS
+      run: |
+          $currentDirectory = Get-Location
+          Write-Host "Current directory: $currentDirectory"
+          echo "::set-output name=current_directory::$currentDirectory"
+
+    - name: Change directory and run VsDevCmd.bat
+      run: |
+          Set-Location "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
+          .\VsDevCmd.bat
+
+    - name: Change back to saved directory
+      run: |
+          Set-Location $env:currentDirectory
+          msbuild
+          
+    - name: through script
       run: |
         cd
         setlocal enabledelayedexpansion
