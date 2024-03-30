@@ -18,16 +18,17 @@ jobs:
     
     - name: Enter VS Cmd terminal through PS
       run: |
-          $currentDirectory = Get-Location
-          Write-Host "Current directory: $currentDirectory"
-          echo "::set-output name=current_directory::$currentDirectory"
-          Set-Location "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
-          .\VsDevCmd.bat
-          Set-Location $env:currentDirectory
-          $currentDirectory = Get-Location
-          Write-Host "Current directory after changing back: $currentDirectory"
-          msbuild
-          
+        $currentDirectory = Get-Location
+        Write-Host "Current directory before entering VS Cmd terminal: $currentDirectory"
+        echo "::set-output name=current_directory::$currentDirectory"
+        Set-Location "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
+        .\VsDevCmd.bat
+        $currentDirectory = Get-Location
+        Write-Host "Current directory after exiting VS Cmd terminal: $currentDirectory"
+        Set-Location $env:currentDirectory
+        $currentDirectory = Get-Location
+        Write-Host "Current directory after changing back: $currentDirectory"
+        msbuild          
     - name: through script
       run: |
         cd
