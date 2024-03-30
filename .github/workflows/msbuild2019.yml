@@ -19,8 +19,9 @@ jobs:
     - name: Find Visual Studio installation path
       id: find_vs_path
       run: |
-        set "VSDEVCMDBAT_PATH=%VSINSTALLDIR%\Common7\Tools\VsDevCmd.bat"
-        call "%VSDEVCMDBAT_PATH%" -arch=x86 -host_arch=x64
+        cd "%VSINSTALLDIR%\Common7\Tools"
+        .\VsDevCmd.bat
+        call VsDevCmd.bat -arch=x86 -host_arch=x64
         echo "Visual Studio environment setup completed."        
     - name: Build project
       run: msbuild /p:Configuration=Release 
