@@ -19,10 +19,8 @@ jobs:
     - name: Find Visual Studio installation path
       id: find_vs_path
       run: |
-        echo "VSINSTALLDIR: $env:VSINSTALLDIR"
-        cd "c:\Program Files (x86)\Microsoft Visual Studio\2019"
-        dir
-        cd '.\Enterprise\Common7\Tools\'
+        cd "%VSINSTALLDIR%\Common7\Tools\"
+        cd
         .\VsDevCmd.bat
         
     - name: Build project
