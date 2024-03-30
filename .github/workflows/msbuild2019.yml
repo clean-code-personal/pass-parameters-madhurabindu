@@ -15,6 +15,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: msbuild through nuget
+      uses: NuGet/setup-msbuild@v1
+      with:
+        vsVersion: 16.0
+    - name: run build
+      run: msbuild
     
     - name: Ms Build through VS Cmd Prompt
       run: |
