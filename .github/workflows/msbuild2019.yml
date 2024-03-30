@@ -23,5 +23,15 @@ jobs:
         Write-Host "Current directory after entering VS Cmd terminal: $currentDirectory"
         Write-Host "Calling msbuild"
         & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=Release
+    
     - name: Run executable
-      run: .\x64\release\cpp-pass-params.exe
+      run: | 
+        .\x64\release\cpp-pass-params.exe
+        Write-Host "Find and execute"
+         $exePath = Get-ChildItem -Path "x64\Release" -Filter "*.exe" -Recurse | Select-Object -First 1 -ExpandProperty FullName
+        if ($exePath) {
+          Write-Host "Executable found: $exePath"
+          Start-Process -FilePath $exePath
+        } else {
+          Write-Host "Executable not found."
+        }
