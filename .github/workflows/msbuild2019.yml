@@ -19,7 +19,7 @@ jobs:
     - name: Find Visual Studio installation path
       id: find_vs_path
       run: |
-        cd
+        cd c:\
         dir
         cd '.\Enterprise\Common7\Tools\'
         .\VsDevCmd.bat
