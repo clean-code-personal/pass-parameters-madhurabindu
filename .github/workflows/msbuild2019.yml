@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_and_run:
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
     - name: Checkout repository
