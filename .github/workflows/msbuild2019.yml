@@ -22,6 +22,6 @@ jobs:
         $currentDirectory = Get-Location
         Write-Host "Current directory after entering VS Cmd terminal: $currentDirectory"
         Write-Host "Calling msbuild"
-        & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" "cpp-pass-params.sln" /p:Configuration=Release
+        & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=Release
     - name: Run executable
       run: .\x64\release\cpp-pass-params.exe
