@@ -34,7 +34,6 @@ jobs:
 
     - name: Run executable
       run: |
-        .\x64\release\cpp-pass-params.exe
          Write-Host "Find and execute"
          $exePath = Get-ChildItem -Path "x64\Release" -Filter "*.exe" -Recurse | Select-Object -First 1 -ExpandProperty FullName
         if ($exePath) {
