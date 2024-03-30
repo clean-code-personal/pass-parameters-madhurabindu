@@ -21,15 +21,11 @@ jobs:
           $currentDirectory = Get-Location
           Write-Host "Current directory: $currentDirectory"
           echo "::set-output name=current_directory::$currentDirectory"
-
-    - name: Change directory and run VsDevCmd.bat
-      run: |
           Set-Location "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
           .\VsDevCmd.bat
-
-    - name: Change back to saved directory
-      run: |
           Set-Location $env:currentDirectory
+          $currentDirectory = Get-Location
+          Write-Host "Current directory after changing back: $currentDirectory"
           msbuild
           
     - name: through script
