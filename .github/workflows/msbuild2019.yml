@@ -19,13 +19,8 @@ jobs:
     - name: Find Visual Studio installation path
       id: find_vs_path
       run: |
-        Get-ChildItem -Path 'C:\Program Files (x86)\Microsoft Visual Studio' -Directory | Where-Object { $_.Name -match "2019" } | Select-Object -ExpandProperty FullName | Out-File vs_path.txt
-
-    - name: Set up Visual Studio environment
-      run: |
-        $vs_path = Get-Content vs_path.txt
-        echo $vs_path
-        cd $vs_path
+        cd
+        dir
         cd '.\Enterprise\Common7\Tools\'
         .\VsDevCmd.bat
         
