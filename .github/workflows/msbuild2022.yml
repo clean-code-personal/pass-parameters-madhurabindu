@@ -6,8 +6,8 @@
 name: C++ vs 2022 MSBuild
 
 on:
-  push:
-    branches: [ "main" ]
+#  push:
+#    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
