@@ -1,3 +1,4 @@
+---
 name: 2019 msbuild
 
 on:
@@ -40,4 +41,4 @@ jobs:
          } else {
            Write-Host "No Executable found."
          }
-
+---
