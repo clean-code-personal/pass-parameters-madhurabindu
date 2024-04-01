@@ -3,14 +3,14 @@ name: 2019 msbuild
 
 on:
   push:
-    branches: [ "main_1" ]
+    branches: ["main_1"]
   pull_request:
-    branches: [ "main_1" ]
+    branches: ["main_1"]
 
 env:
-  SOLUTION_FILE_PATH: .
+  SLN_PATH: .
 
-  BUILD_CONFIGURATION: Release
+  B_CONFIG: Release
 
 permissions:
   contents: read
@@ -20,21 +20,25 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout Repo
+        uses: actions/checkout@v2
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1
-      with:
-        vsVersion: 16.0
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+        with:
+          vsVersion: 16.0
 
-    - name: Build
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      - name: MS Build
+        working-directory: ${{env.GITHUB_WORKSPACE}}
+        run: |
+          msbuild /m /p:Configuration=${{env.B_CONFIG}} ${{env.SLN_PATH}}
 
-    - name: Run executable
-      run: |
+      - name: Run Any executable
+        run: |
          Write-Host "Find and execute"
-         $exePath = Get-ChildItem -Path "x64\Release" -Filter "*.exe" -Recurse | Select-Object -First 1 -ExpandProperty FullName
+         $exePath: >
+          Get-ChildItem -Path "x64\Release" -Filter "*.exe" -Recurse |
+          Select-Object -First 1 -ExpandProperty FullName
          if ($exePath) {
             Write-Host "Executable found: $exePath"
             & $exePath
