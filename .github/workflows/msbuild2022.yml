@@ -1,3 +1,4 @@
+---
 name: 2022 msbuild
 
 on:
@@ -38,4 +39,4 @@ jobs:
          } else {
            Write-Host "No Executable found."
          }
-
+---
