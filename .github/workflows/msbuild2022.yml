@@ -1,0 +1,42 @@
+---
+name: 2022 msbuild
+
+on:
+  push:
+    branches: [ "main_1" ]
+  pull_request:
+    branches: [ "main_1" ]
+
+env:
+  SOLUTION_FILE_PATH: .
+
+  BUILD_CONFIGURATION: Release
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Run executable
+      run: |
+         Write-Host "Find and execute"
+         $exePath = Get-ChildItem -Path "x64\Release" -Filter "*.exe" -Recurse | Select-Object -First 1 -ExpandProperty FullName
+         if ($exePath) {
+            Write-Host "Executable found: $exePath"
+            & $exePath
+         } else {
+           Write-Host "No Executable found."
+         }
+---

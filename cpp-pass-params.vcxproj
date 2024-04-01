@@ -98,10 +98,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="image.h" />
     <ClInclude Include="pass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

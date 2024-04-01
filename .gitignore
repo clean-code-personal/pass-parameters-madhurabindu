@@ -2,3 +2,75 @@
 x64
 Debug
 Release
+
+\# Compiled Object files
+*.suo
+*.obj
+*.o
+*.pch
+*.pdb
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Visual Studio files
+.vs/
+.vscode/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vcproj
+*.vcproj.*
+
+# Compiled files
+*_i.c
+*_p.c
+*.ilk
+*.ncb
+*.log
+*.tlog
+*.tlog/
+*.log
+*.vspscc
+*.vssscc
+.builds
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Installer logs
+install.log
+
+# Package Files
+*.7z
+*.zip
+*.rar
+*.gz
+*.bz2
+*.iso
+*.dmg
+
+# Logs and databases
+*.sqlite
+*.sqlitedb
+*.sqlite3
+*.db
+*.pdb
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+CTestTestfile.cmake
+Makefile
+Testing/
+
+# Other tools
+*.orig
+
+# Subversion
+.svn/
