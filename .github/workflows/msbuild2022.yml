@@ -2,9 +2,9 @@ name: 2022 msbuild
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main_1" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main_1" ]
 
 env:
   SOLUTION_FILE_PATH: .
